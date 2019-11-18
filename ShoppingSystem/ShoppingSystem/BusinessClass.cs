@@ -17,7 +17,7 @@ namespace ShoppingSystem
         public string getConnection() {
             try
             {
-                sqlConn = new SqlConnection("Provider=SQLNCLI11;Data Source=DESKTOP-G1E2CG2;Integrated Security=SSPI;Initial Catalog=ShopDB");
+                sqlConn = new SqlConnection("Data Source=DESKTOP-G1E2CG2;Initial Catalog=ShopDB;Integrated Security=True");
                 sqlConn.Open();
                 sqlConn.Close();
 
@@ -32,7 +32,7 @@ namespace ShoppingSystem
         public string addCustomer(string name, string sur, string id, int gender,string email, string resAdd) {
             try
             {
-                sqlText = "INSERT INTO Customer.Customers (FirstName, LastName, IDNumber, Gender, EmailAddress, ResidentialAddress) ";
+                sqlText = "INSERT INTO Customer.Customers (FirstName, LastName, IDNumber, Gender, EmailAddress, ResidentialAddres) ";
                 sqlText = sqlText + "VALUES('" + name + "','" + sur + "','" + id + "'," + gender + ",'" + email + "','" + resAdd + "')";
                 if (sqlConn.State == System.Data.ConnectionState.Closed)
                 {
