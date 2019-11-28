@@ -63,6 +63,7 @@ namespace ShoppingSystem
         }
         #endregion
 
+        #region btnSave
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -87,5 +88,6 @@ namespace ShoppingSystem
                 MessageBox.Show(ex.Message.ToString(), "Error ocurred", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
     }
 }
