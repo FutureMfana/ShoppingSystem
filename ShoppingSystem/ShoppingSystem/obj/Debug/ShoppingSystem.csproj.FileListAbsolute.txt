@@ -8,3 +8,4 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSy
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.exe
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.pdb
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Employee_Registration.resources
+C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Add_Dependent.resources

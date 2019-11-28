@@ -12,25 +12,44 @@ namespace ShoppingSystem
 {
     public partial class Employee_Registration : Form
     {
+        #region General Declarations
         BusinessClass bclass = new BusinessClass();
-        string id;
+        #endregion
+
+        #region InitializeComponent()
         public Employee_Registration()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form_Load()
         private void Employee_Registration_Load(object sender, EventArgs e)
         {
-            string con = bclass.getConnection();
-            if (!con.ToLower().Equals("true"))
+            try
             {
-                MessageBox.Show(con, "Connection Failed!", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                string con = bclass.getConnection();
+                if (!con.ToLower().Equals("true"))
+                {
+                    MessageBox.Show(con, "Connection Failed!", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                loadManagers();
+                cboGender.SelectedIndex = 0;
+
+                Add_Dependent addDep = new Add_Dependent();
+                addDep.ShowDialog();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error occured!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 return;
             }
-            loadManagers();
-            cboGender.SelectedIndex = 0;
         }
+        #endregion
 
+        #region loadManagers()
         private void loadManagers()
         {
             try
@@ -38,8 +57,11 @@ namespace ShoppingSystem
                 DataSet dsEmps = bclass.getEmployeeIdsNames();
                 if (dsEmps.Tables.Count == 0 || dsEmps.Tables[0].Rows.Count == 0)
                 {
-                    MessageBox.Show("No tables found in the DataSet object or  or table got no rows", "Empty Dataset!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    throw new Exception("No tables found in the DataSet object or  or table got no rows");
+                }
+                if (cboManager.Items.Count > 1)
+                {
+                    cboManager.Items.Clear();
                 }
                 cboGender.SelectedIndex = 0;
                 //MessageBox.Show(dsEmps.Tables["Employees"].Rows[0][0].ToString());
@@ -54,7 +76,9 @@ namespace ShoppingSystem
                 return;
             }
         }
+        #endregion
 
+        #region btnSubmit
         private void btnSumit_Click(object sender, EventArgs e)
         {
             try
@@ -63,6 +87,7 @@ namespace ShoppingSystem
                 string name = txtName.Text.ToString();
                 string sur = txtSur.Text.ToString();
                 double salary = Convert.ToDouble(txtSalary.Text);
+                string id = txtIDNumber.Text.ToString();
                 
                 string managerID = cboManager.SelectedText.ToString().Substring(0, cboManager.SelectedText.ToString().IndexOf("-") + 1);
                 string position = txtPosition.Text.ToString();
@@ -85,5 +110,6 @@ namespace ShoppingSystem
                 return;
             }
         }
+        #endregion
     }
 }
