@@ -12,25 +12,36 @@ namespace ShoppingSystem
 {
     public partial class Form1 : Form
     {
+        #region Global Declarations
         BusinessClass bclass = new BusinessClass();
+        #endregion
+
+        #region InitializeComponent()
         public Form1()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form_Load()
         private void Form1_Load(object sender, EventArgs e)
         {
-            string con = bclass.getConnection();
+            /*string con = bclass.getConnection();
             if (!con.ToLower().Equals("true"))
             {
                 MessageBox.Show(con, "Connection Failed!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 return;
             }
-            Employee_Registration formEmp = new Employee_Registration();
-            formEmp.ShowDialog();
+            /*Employee_Registration formEmp = new Employee_Registration();
+            formEmp.ShowDialog();*/
+
+            Add_Dependent addDep = new Add_Dependent();
+            addDep.ShowDialog();
             this.Hide();
         }
+        #endregion
 
+        #region btnSave
         private void btnSave_Click(object sender, EventArgs e)
         {
             string addCust;
@@ -50,5 +61,6 @@ namespace ShoppingSystem
                 MessageBox.Show(addCust, "Transaction Falied!", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             }
         }
+        #endregion
     }
 }
