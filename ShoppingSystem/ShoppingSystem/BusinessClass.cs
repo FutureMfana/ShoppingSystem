@@ -63,6 +63,36 @@ namespace ShoppingSystem
         }
         #endregion
 
+        #region getCustomerID
+        public DataSet getCustomerID()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                sqlText = "SELECT CustomerID, FullName FROM Customer.AllCustomers";
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                da = new SqlDataAdapter(sqlText, sqlConn);
+                da.Fill(ds, "CustIDs");
+                da.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            catch
+            {
+
+            }
+            return ds;
+           
+        }
+        #endregion
+
         #region getEmployeeIdsName
         public DataSet getEmployeeIdsNames()
         {
@@ -179,6 +209,35 @@ namespace ShoppingSystem
                 return "true";
             }
             catch (Exception ex)
+            {
+                return ex.Message.ToString();
+            }
+        }
+        #endregion
+
+        #region Update Customer
+        public string updateCustomerByCustomerID(int custID, string name, string sur, int gender, string email, string resAdd, string id) {
+            try
+            {
+                sqlText = "UPDATE Customer.Customers SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "',";
+                sqlText += "Gender = " + gender + " EmailAddress = '" + email + "', ResidentialAddres = '" + resAdd + "' WHERE CustomerID";
+                sqlText += " = " + id;
+                
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                sqlCmd = new SqlCommand(sqlText, sqlConn);
+                sqlCmd.ExecuteNonQuery();
+                sqlCmd.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+                return "true";
+            }catch (Exception ex)
             {
                 return ex.Message.ToString();
             }
