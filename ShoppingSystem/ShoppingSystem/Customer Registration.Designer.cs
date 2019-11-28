@@ -125,8 +125,8 @@
             this.cboGender.FormattingEnabled = true;
             this.cboGender.Items.AddRange(new object[] {
             "Select gender",
-            "Male",
-            "Female"});
+            "Female",
+            "Male"});
             this.cboGender.Location = new System.Drawing.Point(165, 279);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(562, 24);

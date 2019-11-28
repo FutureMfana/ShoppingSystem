@@ -53,10 +53,19 @@
     <Compile Include="Customer Registration.Designer.cs">
       <DependentUpon>Customer Registration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee Registration.Designer.cs">
+      <DependentUpon>Employee Registration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Customer Registration.resx">
       <DependentUpon>Customer Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee Registration.resx">
+      <DependentUpon>Employee Registration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
