@@ -23,9 +23,12 @@ namespace ShoppingSystem
             string con = bclass.getConnection();
             if (!con.ToLower().Equals("true"))
             {
-                MessageBox.Show(con, "Connection Failed", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show(con, "Connection Failed!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 return;
             }
+            Employee_Registration formEmp = new Employee_Registration();
+            formEmp.ShowDialog();
+            this.Hide();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace ShoppingSystem
             addCust = bclass.addCustomer(name, sur, id, gender, email, resAdd);
             if (addCust.ToLower().Equals("true"))
             {
-                MessageBox.Show("Trasaction executed successfully", "Record Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Trasaction executed successfully", "Record Added!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }else
             {
                 MessageBox.Show(addCust, "Transaction Falied!", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
