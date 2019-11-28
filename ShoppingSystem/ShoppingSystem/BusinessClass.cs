@@ -41,7 +41,7 @@ namespace ShoppingSystem
             DataSet dsEmps = new DataSet();
             try
             {
-                sqlText = "SELECT EmpID, FirstName + ' ' + LastName AS FullName FROM Staff.Employees WHERE Position <> 'General Worker' AND Position <> 'Student'";
+                sqlText = "SELECT EmpID, FirstName + ' ' + LastName AS FullName FROM Staff.Employees WHERE Position <> 'General Worker' OR Position <> 'Student'";
                 if (sqlConn.State == ConnectionState.Closed)
                 {
                     sqlConn.Open();
