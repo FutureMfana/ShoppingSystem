@@ -26,7 +26,7 @@ namespace ShoppingSystem
         #region Form_Load()
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*string con = bclass.getConnection();
+            string con = bclass.getConnection();
             if (!con.ToLower().Equals("true"))
             {
                 MessageBox.Show(con, "Connection Failed!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
@@ -35,9 +35,12 @@ namespace ShoppingSystem
             /*Employee_Registration formEmp = new Employee_Registration();
             formEmp.ShowDialog();*/
 
-            Add_Dependent addDep = new Add_Dependent();
+            /*Add_Dependent addDep = new Add_Dependent();
             addDep.ShowDialog();
+            this.Hide();*/
+            Update_Customer uc = new Update_Customer();
             this.Hide();
+            uc.ShowDialog();
         }
         #endregion
 
