@@ -93,6 +93,34 @@ namespace ShoppingSystem
         }
         #endregion
 
+        #region getAllCustomers
+        public DataSet getCustomerById(int custID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                sqlText = "SELECT FirstName, LastName, IDNumber, IIF(Gender = 1, 'Male', 'Female') AS Gender, EmailAddress, ResidentialAddres ";
+                sqlText += "FROM Customer.Customers WHERE CustID = " + custID;
+
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                da = new SqlDataAdapter(sqlText, sqlConn);
+                da.Fill(ds, "Customers");
+                da.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            catch { }
+            return ds;
+        }
+        #endregion
+
         #region getEmployeeIdsName
         public DataSet getEmployeeIdsNames()
         {
@@ -193,7 +221,7 @@ namespace ShoppingSystem
             {
                 sqlText = "INSERT INTO Customer.Customers (FirstName, LastName, IDNumber, Gender, EmailAddress, ResidentialAddres) ";
                 sqlText = sqlText + "VALUES('" + name + "','" + sur + "','" + id + "'," + gender + ",'" + email + "','" + resAdd + "')";
-                if (sqlConn.State == System.Data.ConnectionState.Closed)
+                if (sqlConn.State == ConnectionState.Closed)
                 {
                     sqlConn.Open();
                 }
@@ -202,7 +230,7 @@ namespace ShoppingSystem
                 sqlCmd.ExecuteNonQuery();
                 sqlCmd.Dispose();
 
-                if (sqlConn.State == System.Data.ConnectionState.Open)
+                if (sqlConn.State == ConnectionState.Open)
                 {
                     sqlConn.Close();
                 }
@@ -219,10 +247,12 @@ namespace ShoppingSystem
         public string updateCustomerByCustomerID(int custID, string name, string sur, int gender, string email, string resAdd, string id) {
             try
             {
-                sqlText = "UPDATE Customer.Customers SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "',";
-                sqlText += "Gender = " + gender + " EmailAddress = '" + email + "', ResidentialAddres = '" + resAdd + "' WHERE CustomerID";
-                sqlText += " = " + id;
-                
+                if (!isID(id)) {
+                    throw new Exception("Incorrect ID Number");
+                }
+     
+                sqlText = "UPDATE Customer.Customers SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "', Gender = " + gender + ", EmailAddress = '" + email + "', ResidentialAddres = '" + resAdd + "' WHERE CustID = " + 5001;
+
                 if (sqlConn.State == ConnectionState.Closed)
                 {
                     sqlConn.Open();
