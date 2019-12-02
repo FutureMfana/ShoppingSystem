@@ -247,11 +247,12 @@ namespace ShoppingSystem
         public string updateCustomerByCustomerID(int custID, string name, string sur, int gender, string email, string resAdd, string id) {
             try
             {
-                if (isID(id) == false) {
+                if (!isID(id)) {
                     throw new Exception("Incorrect ID Number");
                 }
-                sqlText = "UPDATE Customer.Customers SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "', Gender = "+ gender + ", EmailAddress = '" + email +"', ResidentialAddres = '" + resAdd + "' WHERE CustID = " + 5001;
-                
+     
+                sqlText = "UPDATE Customer.Customers SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "', Gender = " + gender + ", EmailAddress = '" + email + "', ResidentialAddres = '" + resAdd + "' WHERE CustID = " + 5001;
+
                 if (sqlConn.State == ConnectionState.Closed)
                 {
                     sqlConn.Open();
