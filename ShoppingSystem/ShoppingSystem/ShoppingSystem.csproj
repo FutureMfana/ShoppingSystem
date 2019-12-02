@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Update Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update Customer.Designer.cs">
+      <DependentUpon>Update Customer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add Dependent.resx">
       <DependentUpon>Add Dependent.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Update Customer.resx">
+      <DependentUpon>Update Customer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
