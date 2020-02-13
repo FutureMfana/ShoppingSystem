@@ -36,10 +36,6 @@ namespace ShoppingSystem
                 }
                 loadManagers();
                 cboGender.SelectedIndex = 0;
-
-                Add_Dependent addDep = new Add_Dependent();
-                addDep.ShowDialog();
-                this.Hide();
             }
             catch (Exception ex)
             {
@@ -111,5 +107,17 @@ namespace ShoppingSystem
             }
         }
         #endregion
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblUpdateEmployee_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Update_Employee frmUpdateEmp = new Update_Employee();
+            frmUpdateEmp.Show();
+            this.Hide();
+        }
     }
 }

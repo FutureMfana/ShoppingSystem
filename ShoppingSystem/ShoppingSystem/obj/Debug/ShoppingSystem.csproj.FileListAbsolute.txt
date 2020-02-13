@@ -2,7 +2,6 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSy
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\bin\Debug\ShoppingSystem.exe
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\bin\Debug\ShoppingSystem.pdb
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.csprojResolveAssemblyReference.cache
-C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Form1.resources
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Properties.Resources.resources
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.csproj.GenerateResource.Cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.exe
@@ -10,3 +9,5 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSy
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Employee_Registration.resources
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Add_Dependent.resources
 C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Update_Customer.resources
+C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.Update_Employee.resources
+C:\Users\Student\Documents\Visual Studio 2015\Projects\ShoppingSystem\ShoppingSystem\obj\Debug\ShoppingSystem.CustomerRegistration.resources

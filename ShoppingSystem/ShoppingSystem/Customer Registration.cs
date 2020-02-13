@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace ShoppingSystem
 {
-    public partial class Form1 : Form
+    public partial class CustomerRegistration : Form
     {
         #region Global Declarations
         BusinessClass bclass = new BusinessClass();
         #endregion
 
         #region InitializeComponent()
-        public Form1()
+        public CustomerRegistration()
         {
             InitializeComponent();
         }
@@ -38,9 +38,7 @@ namespace ShoppingSystem
             /*Add_Dependent addDep = new Add_Dependent();
             addDep.ShowDialog();
             this.Hide();*/
-            Update_Customer uc = new Update_Customer();
-            this.Hide();
-            uc.ShowDialog();
+            //Update_Customer uc = new Update_Customer();
         }
         #endregion
 
@@ -65,5 +63,12 @@ namespace ShoppingSystem
             }
         }
         #endregion
+
+        private void lblUpdateCustomer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Update_Customer frmUpdateCust = new Update_Customer();
+            frmUpdateCust.Show();
+            this.Hide();
+        }
     }
 }

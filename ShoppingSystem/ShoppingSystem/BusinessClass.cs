@@ -35,6 +35,35 @@ namespace ShoppingSystem
         }
         #endregion
 
+        #region getEmployeeById
+        public DataSet getEmployeeByID(int id)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                sqlText = "SELECT FirstName, LastName, IDNumber, IIF(Gender > 0, 'Male','Female') as Gender, Position, IIF(ManagerID IS NOT NULL, ManagerID, '') AS ManagerID, Salary FROM Staff.Employees WHERE EmpID = " + id;
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                da = new SqlDataAdapter(sqlText, sqlConn);
+                da.Fill(ds, "Employee");
+                da.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            catch
+            {
+
+            }
+            return ds;
+        }
+        #endregion
+
         #region getManagers
         public DataSet getManagers()
         {
@@ -121,33 +150,6 @@ namespace ShoppingSystem
         }
         #endregion
 
-        #region getEmployeeIdsName
-        public DataSet getEmployeeIdsNames()
-        {
-            DataSet dsEmpIdsNames = new DataSet();
-            try
-            {
-                sqlText = "SELECT EmpID, FirstName + ' ' + LastName AS FullName FROM Staff.Employees";
-                if (sqlConn.State == ConnectionState.Closed)
-                {
-                    sqlConn.Open();
-                }
-
-                da = new SqlDataAdapter(sqlText, sqlConn);
-                da.Fill(dsEmpIdsNames, "Employees");
-                da.Dispose();
-                
-                if (sqlConn.State == ConnectionState.Open)
-                {
-                    sqlConn.Close();
-                }
-            }
-            catch{ /*EXCEPTION*/ }
-            return dsEmpIdsNames;
-        }
-
-        #endregion
-
         #region addDependent
         public string addDependent(string name, string sur, string id, int gener, int empID)
         {
@@ -174,6 +176,33 @@ namespace ShoppingSystem
                 return ex.Message.ToString();
             }
         }
+        #endregion
+
+        #region getEmployeeIdsName
+        public DataSet getEmployeeIdsNames()
+        {
+            DataSet dsEmpIdsNames = new DataSet();
+            try
+            {
+                sqlText = "SELECT EmpID, FirstName + ' ' + LastName AS FullName FROM Staff.Employees";
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                da = new SqlDataAdapter(sqlText, sqlConn);
+                da.Fill(dsEmpIdsNames, "Employees");
+                da.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            catch { /*EXCEPTION*/ }
+            return dsEmpIdsNames;
+        }
+
         #endregion
 
         #region addEmployee
@@ -210,6 +239,40 @@ namespace ShoppingSystem
             catch (Exception ex)
             {
                 return ex.Message.ToString();
+            }
+        }
+        #endregion
+
+        #region UpdateEmployee
+        public string updateEmployeeByID(int empId, string name, string sur, string id, int gender, string position, double salary, int manager = 0)
+        {
+            try
+            {
+                sqlText = "UPDATE Staff.Employees SET FirstName = '" + name + "', LastName = '" + sur + "', IDNumber = '" + id + "', Gender = " + gender;
+                sqlText += ", Position = '" + position + "', Salary = " + salary + " WHERE EmpID = " + empId;
+                if (!isID(id))
+                {
+                    throw new Exception("Invalid ID Number provided");
+                }
+                if (sqlConn.State == ConnectionState.Closed)
+                {
+                    sqlConn.Open();
+                }
+
+                sqlCmd = new SqlCommand(sqlText, sqlConn);
+                sqlCmd.ExecuteNonQuery();
+                sqlCmd.Dispose();
+
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+
+                return "true";
+            }
+            catch (Exception e)
+            {
+                return e.Message.ToString();
             }
         }
         #endregion

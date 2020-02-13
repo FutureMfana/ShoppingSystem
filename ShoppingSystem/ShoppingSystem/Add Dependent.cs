@@ -68,6 +68,16 @@ namespace ShoppingSystem
         {
             try
             {
+                if (cboEmployee.SelectedIndex == -1)
+                {
+                    cboEmployee.Focus();
+                    throw new Exception("Please an employee");
+                }else if(cboGender.SelectedIndex == -1)
+                {
+                    cboGender.Focus();
+                    throw new Exception("Please your gender");
+                }
+
                 string name = txtName.Text.ToString();
                 string sur = txtSur.Text.ToString();
                 string id = txtID.Text.ToString();
@@ -89,5 +99,10 @@ namespace ShoppingSystem
             }
         }
         #endregion
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
